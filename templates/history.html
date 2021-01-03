@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block link %}
+    <link href="/static/portfolio.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table>
+        <tr>
+            <th>Ticker</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Transacted</th>
+        </tr>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction['ticker'] }}</td>
+            <td>{{ transaction['shares'] }}</td>
+            <td>{{ '$' + transaction['price'] }}</td>
+            <td>{{ transaction['date'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
