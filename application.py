@@ -45,7 +45,7 @@ if not os.environ.get("API_KEY"):
 def index():
 
     # Gets sum of all distinct tickers in a dictionary that user owns
-    stocks_count = db.execute("SELECT SUM(shares), ticker, company_name FROM purchases WHERE id = ? GROUP BY ticker HAVING SUM(shares) > 0;", session["user_id"])
+    stocks_count = db.execute("SELECT SUM(shares), ticker, company_name FROM purchases WHERE id = ? GROUP BY ticker HAVING SUM(shares) > 0;", (session["user_id"]))
     print(stocks_count)
 
     # Variable for value of all stocks user owns
