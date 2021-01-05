@@ -1,5 +1,3 @@
-# API: export API_KEY=pk_00d250024831491ca996207369b4ec10
-
 import os
 import datetime
 from cs50 import SQL
