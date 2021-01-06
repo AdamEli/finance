@@ -11,7 +11,7 @@ from helpers import apology, login_required, lookup, usd
 
 # Configure application
 app = Flask(__name__)
-app.secret_key = "abc"
+app.secret_key = "abc" #Get rid maybe
 
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -61,7 +61,7 @@ def index():
         total = float(stock['price']) * stock['num_shares']
         stock['total'] = usd(total)
         total_stock_value += total
-        print(total)
+        num_shares = int(num_shares)
 
     # Gets user's total cash to display
     user_cash = db.execute('SELECT cash FROM users WHERE id = ?', session["user_id"]) # (session["user_id"]) might not throw error
