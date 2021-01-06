@@ -44,8 +44,8 @@ if not os.environ.get("API_KEY"):
 @login_required
 def index():
 
-    # Gets sum of all distinct tickers in a dictionary that user owns
-    stocks_count = db.execute("SELECT SUM(shares), ticker, company_name FROM purchases WHERE id = ? GROUP BY ticker HAVING SUM(shares) > 0;", (session["user_id"]))
+    # Gets sum of all distinct shares of a ticker that user owns
+    stocks_count = db.execute("SELECT SUM(shares), ticker, company_name FROM purchases WHERE id = ? GROUP BY ticker, company_name HAVING SUM(shares) > 0;", (session["user_id"]))
     print(stocks_count)
 
     # Variable for value of all stocks user owns
@@ -63,7 +63,7 @@ def index():
         print(total)
 
     # Gets user's total cash to display
-    user_cash = db.execute('SELECT cash FROM users WHERE id = ?', session["user_id"])
+    user_cash = db.execute('SELECT cash FROM users WHERE id = ?', session["user_id"]) # (session["user_id"]) might not throw error
     cash = int(user_cash[0]['cash'])
 
     # Sets total to value of stocks + amount of cash
