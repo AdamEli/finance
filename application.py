@@ -45,7 +45,7 @@ if not os.environ.get("API_KEY"):
 def index():
 
     # Gets sum of all distinct shares of a ticker that user owns
-    stocks_count = db.execute("SELECT SUM(shares), ticker, company_name FROM purchases WHERE id = ? GROUP BY ticker, company_name HAVING SUM(shares) > 0;", (session["user_id"]))
+    stocks_count = db.execute("SELECT SUM(shares), ticker, company_name FROM purchases WHERE id = ? GROUP BY ticker, company_name HAVING SUM(shares) > 0;", (session["user_id"])) # URGENT take out the ", company_name"
     print(stocks_count)
 
     # Variable for value of all stocks user owns
@@ -57,7 +57,7 @@ def index():
         stock['price'] = str(current)
         print(current)
         # Current total price of all shares
-        total = float(stock['price']) * stock['SUM(shares)']
+        total = float(stock['price']) * stock['shares']
         stock['total'] = usd(total)
         total_stock_value += total
         print(total)
