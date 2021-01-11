@@ -1,7 +1,7 @@
 import os
 import datetime
 from cs50 import SQL
-from flask import Flask, flash, jsonify, redirect, render_template, request, session
+from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 from flask_session import Session
 from tempfile import mkdtemp
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
@@ -199,7 +199,7 @@ def login():
         print(session["user_id"])
 
         # Redirect user to home page
-        return redirect(url_for("index"))
+        return redirect(url_for('index'))
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
