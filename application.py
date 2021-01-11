@@ -344,10 +344,10 @@ def sell():
             return apology("Please select a stock to sell")
 
         # Dict of shares they own of the stock
-        owned_shares = db.execute('SELECT SUM(shares) FROM purchases WHERE id = ? AND ticker = ?', session["user_id"], stock)
+        owned_shares = db.execute('SELECT SUM(shares) as num_shares FROM purchases WHERE id = ? AND ticker = ?', session["user_id"], stock)
 
         # Number of shares user owns of stock
-        num_shares = int(owned_shares[0]['SUM(shares)'])
+        num_shares = int(owned_shares[0]['num_shares'])
 
         # If user doesn't own the stock
         if num_shares < 0:
