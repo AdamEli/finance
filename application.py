@@ -73,7 +73,7 @@ def index():
 
 
 
-    """
+    """ take out
     # Total stock value:
     value = 0
 
