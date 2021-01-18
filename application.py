@@ -377,6 +377,17 @@ def sell():
         return redirect("/")
 
 
+@app.route("/create_game", methods=["GET", "POST"])
+@login_required
+def make_game():
+    if request.method == "GET":
+        return render_template('make_game.html')
+    if request.method == "POST":
+        name = request.form.get('name')
+        password = request.form.get('password')
+        db.execute("INSERT INTO games (name, password) VALUES (?,?)", name, generate_password_hash(password))
+
+
 
 def errorhandler(e):
     """Handle error"""
