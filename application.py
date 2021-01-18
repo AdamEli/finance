@@ -377,7 +377,7 @@ def sell():
         return redirect("/")
 
 
-@app.route("/create_game", methods=["GET", "POST"])
+@app.route("/make_game", methods=["GET", "POST"])
 @login_required
 def make_game():
     if request.method == "GET":
