@@ -42,7 +42,6 @@ if not os.environ.get("API_KEY"):
     raise RuntimeError("API_KEY not set")
 
 
-SESSION_REDIS = redis.from_url(environ.get('redis-10524.c81.us-east-1-2.ec2.cloud.redislabs.com:10524'))
 
 @app.route("/")
 @login_required
