@@ -49,6 +49,8 @@ SESSION_SQLALCHEMY = "postgres://kymiimkbnzvoge:0bd5cbc822a45ed62c69aca7a8a68ed4
 # What table in the database to use, default is "sessions"
 SESSION_SQLALCHEMY_TABLE = "sessions"
 
+Session(app)
+
 @app.route("/")
 @login_required
 def index():
